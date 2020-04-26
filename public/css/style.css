@@ -1,0 +1,105 @@
+@charset 'utf-8';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 16px sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(226, 231, 241);
+}
+
+.app {
+  float: left;
+  padding: 30px;
+  width: 100%;
+}
+
+.search {
+  margin-bottom: 30px;
+}
+
+.search input {
+  font-size: 30px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 20px;
+  border: solid 2px rgb(51, 102, 240)
+}
+
+.search input:focus {
+  outline: 0;
+  border-radius: 20px;
+  border-color: green;
+} 
+
+.user-info img {
+  float: left;
+  margin: 0 20px 20px 0;
+  max-height: 200px;
+  border-radius: 100px;
+
+}
+
+.repos-info li {
+  padding: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.actions,
+.repos,
+.starred {
+  float: left;
+  width: 100%;
+
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions button {
+  font-size: 20px;
+  font-weight: 700;
+  height: 50px;
+  width: 48%;
+  border-radius: 20px;
+  background-color: rgb(51, 102, 240);
+  border: none;
+  color: white
+}
+
+.actions button:focus {
+  border-radius: 20px;
+  outline: 0;
+  box-shadow: 0 0 0 0;
+} 
+
+.actions button:hover {
+  background-color: rgb(88, 123, 218);
+} 
+
+.repos li,
+.starred li {
+  padding: 10px 0;
+}
+
+.repos li a,
+.starred li a{
+  padding: 10px 0;
+  color: black;
+  text-decoration: none;
+}
+
+.repos li + li,
+.starred li + li {
+  border-top: 1px solid #ccc;
+}
