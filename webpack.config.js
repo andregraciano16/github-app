@@ -1,10 +1,11 @@
 const path = require('path');
+const HtmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './public/index.jsx',
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: 'bundle.js'
+        filename: '[name]-[hash].js'
     },
     devServer: {
         port: 8080,
@@ -23,6 +24,22 @@ module.exports = {
                     presets: ['@babel/preset-env', '@babel/preset-react']
                 }
             }
-        }]
-    }
+        },
+        {
+            exclude: /node_modules/,
+            test: /\.css$/i,
+            use: [{
+                loader: "style-loader"
+            },
+            {
+                loader: "raw-loader"
+            }],
+        },]
+    },
+    plugins: [
+        new HtmlPlugin({
+            title: 'GitHub App',
+            template: path.join(__dirname, 'public', 'html', 'template.html')
+        })
+    ]
 }
