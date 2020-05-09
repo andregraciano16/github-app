@@ -1,19 +1,20 @@
 const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const DashboardPlugin = require('webpack-dashboard/plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 
 module.exports = {
     entry: './public/index.jsx',
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: '[name]-[hash].js'
+        filename: '[name]-[hash].js',
+        chunkFilename: '[name]-[hash].js'
     },
     devServer: {
         port: 8080,
-        contentBase: path.resolve(__dirname, 'public'),
-        hot: true
+        contentBase: './public',
     },
     resolve: {
         extensions: ['*', '.js', '.jsx']
@@ -34,29 +35,38 @@ module.exports = {
             test: /\.css$/i,
             use: [
                 {
-                    loader: "style-loader",
-                },
-                {
                     loader: MiniCssExtractPlugin.loader,
                     options: {
-                        publicPath: 'public',
+                        publicPath: path.join(__dirname, 'public', 'css'),
                     },
                 },
                 {
-                    loader: 'css-loader',
-                    options: {
-                        modules: true,
-                    },
-                }
+                    loader: 'css-loader'
+                },
+
             ],
-        }]
+        },]
     },
     plugins: [
-        new MiniCssExtractPlugin({ path: path.resolve(__dirname, 'public'), filename: '[name]-[hash].css', chunkFilename: '[id].css' }),
-        new DashboardPlugin(),
+        new MiniCssExtractPlugin({ filename: '[name]-[hash].css', chunkFilename: '[name]-[hash].css' }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': '"production"'
+            }
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new HtmlPlugin({
             title: 'GitHub App',
-            template: path.join(__dirname, 'public', 'html', 'template.html'),
-        }),
-    ]
+            template: path.join(__dirname, 'public', 'html', 'template.html')
+        })
+    ],
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                uglifyOptions: {
+                    compress: false,
+                },
+            })
+        ]
+    },
 }

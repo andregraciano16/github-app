@@ -1,0 +1,32 @@
+@charset 'utf-8';
+.actions {
+  float: left;
+  width: 100%;
+
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions button {
+  font-size: 20px;
+  font-weight: 700;
+  height: 50px;
+  width: 48%;
+  border-radius: 20px;
+  background-color: rgb(51, 102, 240);
+  border: none;
+  color: white
+}
+
+.actions button:focus {
+  border-radius: 20px;
+  outline: 0;
+  box-shadow: 0 0 0 0;
+} 
+
+.actions button:hover {
+  background-color: rgb(88, 123, 218);
+} 

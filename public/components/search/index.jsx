@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import style from './search.css';
 const Search = ({ isDisabled, handleSearch }) => (
-    <div className='search'>
+    <div className={style.search}>
         <input type='search'
                placeholder='Digite o nome do repositório' 
                onKeyUp={handleSearch}
