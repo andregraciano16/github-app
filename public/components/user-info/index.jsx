@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-import style from './user-info.css';
+import './user-info.css';
 const UserInfo = ({ userinfo }) => (
     <div className='user-info'>
         <img src={userinfo.photo} />
