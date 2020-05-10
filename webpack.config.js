@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: './public/index.jsx',
