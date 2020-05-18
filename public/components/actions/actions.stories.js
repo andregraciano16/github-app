@@ -1,14 +1,13 @@
 import React from 'react';
-import { Button } from '@storybook/react/demo';
+import { storiesOf } from '@storybook/react';
+import { actions } from '@storybook/addon-actions';
+import Actions from './index';
 
-export default { title: 'Button' };
+const stories = storiesOf('Actions', module)
 
-export const withText = () => <Button>Hello Button</Button>;
-
-export const withEmoji = () => (
-  <Button>
-    <span role="img" aria-label="so cool">
-      😀 😎 👍 💯
-    </span>
-  </Button>
-);
+stories.add('Actions component', () => (
+  <Actions
+    getRepos={actions('onClick')}
+    getStarred={actions('onClick')}
+  />
+))

@@ -8,6 +8,7 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
     "@fdaciuk/ajax": "^3.0.4",
+    "@storybook/addon-actions": "^5.3.18",
     "@storybook/cli": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "babel-loader": "^8.1.0",
